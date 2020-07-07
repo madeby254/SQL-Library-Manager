@@ -1,27 +1,52 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@600&display=swap');*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;600&display=swap');
+
 body {
-  padding: 10px 50px 50px;
-  font: 18px "Garamond", serif;
+  background-color: rgb(230,221,222);
+  color: rgb(64,61,61);
+}
+
+main {
+  padding: 0px 150px 200px 150px;
+  font: 18px "Noto Sans", sans-serif;
+  height: 100%;
+  margin-bottom:0;
 }
 
 a {
-  color: #019875;
+  color: rgb(134,179,147);
   text-decoration: none;
   font-weight: bold;
   transition: 0.4s;
 }
 
   a:hover {
-    color: black;
+    color: rgba(134,179,147, 0.5);
   }
 
 a.button, input[type=submit] {
   color: white;
-  background: #019875;
+  background: rgb(134,179,147);
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 10px 14px 12px;
   font-size: 14px;
-  border-radius: 2px;
+  border-radius: 3px;
   cursor: pointer;
+}
+
+h1{
+  font: 4.5em "Noto Serif", serif;
+  margin-bottom: 0;
+  margin-top:0;
+}
+
+h2.title {
+  font: 2em "Noto Serif", serif;
+  margin-top: 0;
+  text-align: center;
+  padding-bottom: 50px;
 }
 
 form a.button, input[type=submit] {
@@ -34,8 +59,9 @@ input[type=submit] {
 }
 
   a.button:hover, input[type=submit]:hover {
-    background-color: #01b189;
+    background-color: rgba(134,179,147, 0.5);
   }
+
 
 p {
   margin: 20px auto;
@@ -48,15 +74,22 @@ ul {
   line-height: 1.3em;
 }
 
-h2 {
-  border-top: 2px solid #e7e7e7;
+h3.errors {
+  border-top: 2px solid rgb(255,166,166);
   padding-top: 20px;
 }
 
+table {
+  border-bottom: 2px solid rgb(255,166,166);
+  width: 100%;
+  margin-top: 2em;
+}
+
 th {
-  border-bottom: 2px solid #D8B493;
+  border-bottom: 2px solid rgb(255,166,166);
   text-align: left;
   padding: 5px 20px 5px 10px;
+  background-color: #F0F0F0;
 }
 
 tr {
@@ -69,10 +102,11 @@ tr:nth-child(2n) {
 
 td {
   padding: 5px 20px 5px 10px;
+  background-color: #F0F0F0;
 }
 
 label {
-  font-weight: bold;
+  font-weight: 400;
   min-width: 130px;
   display: inline-block;
   transition: 0.4s;
@@ -80,11 +114,17 @@ label {
 
 input {
   padding: 10px;
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  border-radius: 2px;
-  border-color: #E7E7E7;
-  transition: 0.4s;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  border: 2px solid rgb(134,179,147);
+  border-radius: 3px;
+  outline: none;
+  /*background-color: rgb(255,243,243);*/
+}
+
+input:focus {
+  border-color:rgba(134,179,147, 0.3);
+  transition: border-color .4s, background-color .4s;
 }
 
 input[type=text] {
@@ -92,6 +132,27 @@ input[type=text] {
   width: 300px;
 }
 
-.error {
-  color: rgb(236, 15, 15);
+input.submit {
+  text-align: center;
 }
+
+.errors {
+  color: rgb(244,127,127);
+}
+
+.error{
+  text-align: center;
+  font-size: 1em;
+}
+
+.header {
+  background-color: rgb(230,221,222);
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding-top: 30px;
+  /*position: absolute;*/
+}
+/*.newBook {*/
+/*  text-align: center;*/
+/*}*/
