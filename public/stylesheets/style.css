@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;600&display=swap');
 
 body {
-  background-color: rgb(230,221,222);
-  color: rgb(64,61,61);
+  background-color: #22223B;
+  color: #4A4E69;
 }
 
 main {
@@ -13,19 +13,19 @@ main {
 }
 
 a {
-  color: rgb(134,179,147);
+  color: #606C38;
   text-decoration: none;
   font-weight: bold;
   transition: 0.4s;
 }
 
   a:hover {
-    color: rgba(134,179,147, 0.5);
+    color: rgba(40,54,24, 0.5);
   }
 
 a.button, input[type=submit] {
   color: white;
-  background: rgb(134,179,147);
+  background: #BC6C25;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 10px 14px 12px;
   font-size: 14px;
@@ -56,7 +56,7 @@ input[type=submit] {
 }
 
   a.button:hover, input[type=submit]:hover {
-    background-color: rgba(134,179,147, 0.5);
+    background-color: rgba(221, 161, 94,0.5);
   }
 
 
