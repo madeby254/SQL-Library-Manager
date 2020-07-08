@@ -9,8 +9,6 @@ const books = require('./routes/books');
 
 const app = express();
 
-let checkError;
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 //Set view engine to pug
@@ -43,14 +41,14 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use( (err, req, res, next) => {
-if(checkError === false){
-    res.render('page-not-found');
-}else {
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-}
+app.use((err, req, res, next) => {
+    if (checkError === false) {
+        res.render('page-not-found');
+    } else {
+        // render the error page
+        res.status(err.status || 500);
+        res.render('error');
+    }
 });
 
 module.exports = app;
