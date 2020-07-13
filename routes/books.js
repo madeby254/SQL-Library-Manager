@@ -48,14 +48,13 @@ router.post('/new', asyncHandler(async (req, res) => {
 /* GET update book form */
 router.get('/:id', asyncHandler(async (req, res, next) => {
     const book = await Book.findByPk(req.params.id); //finds book by its id
-    // console.log(req.params.id);
-    let err;
-    book
-        ? res.render('update-book', { book, title: book.title, h1: 'Update' })
-        : (err = new Error('Book Page Not Found'), //create 404 status error
-            err.statusCode = 404,
-            res.render('page-not-found'))
+    if (book) {
+        res.render("update-book", { book });
+    } else {
+        res.render('error');
+    }
 }));
+
 
 /* POST update books info in a database */
 router.post('/:id', asyncHandler(async (req, res) => {
@@ -63,15 +62,19 @@ router.post('/:id', asyncHandler(async (req, res) => {
     try {
         book = await Book.findByPk(req.params.id); //finds book by its id
         book
-            ? (await book.update(req.body),
-                res.redirect('/books/'))
-            : res.sendStatus(404)
+        if (book) {
+            await book.update(req.body);
+            res.redirect('/books/' + book.id);
+        } else {
+            res.sendStatus(404).render('error');
+        }
     } catch (error) {
         if (error.name === "SequelizeValidationError") { // checking the error
             book = await Book.build(req.body); // validation error, display the error
-            res.render('update-book', { book, errors: error.errors, title: 'New Book' });
+            book.id = req.params.id;
+            res.render("update-book", { book, errors: error.errors })
         } else {
-            throw error; // error caught in the asyncHandler's catch block
+            throw error;
         }
     }
 }));
@@ -79,10 +82,11 @@ router.post('/:id', asyncHandler(async (req, res) => {
 /* POST delete book */
 router.post('/:id/delete', asyncHandler(async (req, res) => {
     const book = await Book.findByPk(req.params.id);
-    book
-        ? (await book.destroy(),
-            res.redirect('/books'))
-        : res.sendStatus(404)
+    if (book) {
+        await book.destroy();
+        res.redirect("/books");
+    } else {
+        res.sendStatus(404).render('page-not-found');
+    }
 }));
-
 module.exports = router;
